@@ -42,11 +42,11 @@ void loop() {
   StaticJsonBuffer<1000> jsonBuffer;
   JsonObject& rootSerial = jsonBuffer.parseObject(s);
 
-  Serial.println("before if");
+  //Serial.println("before if");
   if (rootSerial != JsonObject::invalid()) {
 
 
-    Serial.println("after if");
+   // Serial.println("after if");
 
     int num = rootSerial["spotNo"];
     Serial.println(num);
