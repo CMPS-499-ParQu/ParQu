@@ -14,7 +14,15 @@ int buttonState = 0;
 void setup() {
   s.begin(9600);
   Serial.begin(9600);
-
+  
+//  String A = "2019-06-01";
+//  String B = "2019-05-31";
+//  if(A>B){
+//    Serial.println("A>B");
+//  } else {
+//    Serial.println("B>A");
+//  }
+  
   pinMode(buttonPin, INPUT);
 
   for (auto trig : TRIG_PINS) {
@@ -146,18 +154,10 @@ void sendChangesToSerial() {
     root["spot4"] = spotChangesSerial[3];
 
     root.printTo(s);
-    //root.printTo(Serial);
-    // Serial.println("Sent to nodemcu");
     delay(500);
     confirm = s.read();
     if (confirm != 30) {
       root.printTo(s);
-//      for(int i=0; i<4; i++){
-//        if(spotChangesSerial[i]!=3){
-//          spotStatus[zoneNumb][i]=0;
-//          Serial.println("Spot not confirmed, restarting");
-//        }
-//      }
     }
     
     changeInStatus = false;
