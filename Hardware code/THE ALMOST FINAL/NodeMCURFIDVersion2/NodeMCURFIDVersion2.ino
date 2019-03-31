@@ -74,7 +74,6 @@ void loop()
   if (root == JsonObject::invalid())
     return;
   s.write(10);
-
   //Serial.println("JSON received and parsed");
   //root.prettyPrintTo(Serial);
 
@@ -99,6 +98,7 @@ void loop()
   }
 
   sendResultsSerially();
+  //delay(100);
 }
 
 
@@ -111,11 +111,11 @@ void getUserData() {
 
   FirebaseObject nodeUsers = Firebase.get("users");
   if (Firebase.failed()) {
-        Serial.print("setting failed:");
-        Serial.println(Firebase.error());
-        ESP.reset();
-        return;
-   }
+    Serial.print("setting failed:");
+    Serial.println(Firebase.error());
+    ESP.reset();
+    return;
+  }
   JsonObject& users = nodeUsers.getJsonVariant();
 
   for (auto user : users) {
@@ -150,7 +150,7 @@ void getUserData() {
       Serial.println(Firebase.error());
       ESP.reset();
       return;
-     }
+    }
     JsonObject& reservations = nodeReserv.getJsonVariant();
     //Serial.println("before reservations loop");
     for (auto reserv : reservations) {
@@ -169,7 +169,7 @@ void getUserData() {
               validP1Reserv = false;
             }
           } else if (zoneNumb == 1) {
-            if(!zone.equals("CBAE Female & Male Zone") ){
+            if (!zone.equals("CBAE Female & Male Zone") ) {
               validP1Reserv = false;
             }
           }
@@ -219,33 +219,31 @@ void compareForEntry() {
   } else if (entryStat == 6) {
     getCurrentTime();
     float penalties = 0;
-    float deduct = 0;
     if (dateStamp.equals(date) && (hourStamp >= hours[0])) {
       accepted = true;
-      
-      if(hourStamp <= hours[hoursSize - 1]){ //Automatic Cancellation Penalty
-        if(!(hourStamp == (hours[hoursSize - 1]) && minuteStamp>=55))
-          penalties += -2.5*(hours[hoursSize - 1]-hourStamp);
-      } else if(hourStamp > hours[hoursSize - 1]){ //Exiting after reservation time
-        if(!(hourStamp == (hours[hoursSize - 1]+1) && minuteStamp<=5))
-          penalties += 7.5*((hourStamp+1) - (hours[hoursSize - 1]+1));
+
+      if (hourStamp < hours[hoursSize - 1]) { //Automatic Cancellation Penalty
+        penalties -= 2.5 * (hours[hoursSize - 1] - hourStamp);
+      } else if (hourStamp > hours[hoursSize - 1]) { //Exiting after reservation time
+        if (!(hourStamp == (hours[hoursSize - 1] + 1) && minuteStamp <= 5))
+          penalties += 7.5 * ((hourStamp + 1) - (hours[hoursSize - 1] + 1));
       }
-      
+
       String path("reservations/" + reservKey + "/status");
       Firebase.setString(path, "ended");
-      
-      if(penalties != 0){
-         String penaltyPath("reservations/" + reservKey + "/price");
-         penalties += Firebase.getFloat(penaltyPath);
-         Firebase.setFloat(penaltyPath, penalties);
+
+      if (penalties != 0) {
+        String penaltyPath("reservations/" + reservKey + "/price");
+        penalties += Firebase.getFloat(penaltyPath);
+        Firebase.setFloat(penaltyPath, penalties);
       }
     }
   }
   if (Firebase.failed()) {
-      Serial.print("getting failed");
-      Serial.println(Firebase.error());
-      ESP.reset();
-      return;
+    Serial.print("getting failed");
+    Serial.println(Firebase.error());
+    ESP.reset();
+    return;
   }
 }
 void getCurrentTime() {
@@ -266,8 +264,8 @@ void getCurrentTime() {
   splitT = timeStamp.indexOf(":");
   String hr = timeStamp.substring(0, splitT);
   hourStamp = hr.toInt();
-  
-  // Extract minute 
+
+  // Extract minute
   String minAndSecStamp = timeStamp.substring(splitT + 1, timeStamp.length() - 1);
   splitT = minAndSecStamp.indexOf(":");
   String minn = timeStamp.substring(0, splitT);
@@ -277,12 +275,14 @@ void getCurrentTime() {
 
 void sendResultsSerially() {
   if (accepted) {
+    Serial.println("Access allowed");
     s.write(20);
     int n = s.read();
     if (n != 30) {
       s.write(20);
     }
   } else {
+    Serial.println("Access denied");
     s.write(40);
     int n = s.read();
     if (n != 30) {

@@ -146,18 +146,10 @@ void sendChangesToSerial() {
     root["spot4"] = spotChangesSerial[3];
 
     root.printTo(s);
-    //root.printTo(Serial);
-    // Serial.println("Sent to nodemcu");
     delay(500);
     confirm = s.read();
     if (confirm != 30) {
       root.printTo(s);
-//      for(int i=0; i<4; i++){
-//        if(spotChangesSerial[i]!=3){
-//          spotStatus[zoneNumb][i]=0;
-//          Serial.println("Spot not confirmed, restarting");
-//        }
-//      }
     }
     
     changeInStatus = false;

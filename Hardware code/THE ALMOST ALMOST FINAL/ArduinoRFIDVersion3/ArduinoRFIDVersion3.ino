@@ -76,6 +76,7 @@ void loop() {
     root["C"] = numbers[2];
     root["D"] = numbers[3];
     root.printTo(s);
+    delay(500);
     n = s.read();
     if (n == 10) {
       inProgress = true;
@@ -86,20 +87,18 @@ void loop() {
     n = s.read();
     if (n == 20) {
       Serial.println("Access allowed");
-      s.write(30);
       inProgress = false;
       digitalWrite(LED_CLOSE, LOW);
       digitalWrite(LED_OPEN, HIGH);
       delay(5000);
       digitalWrite(LED_CLOSE, HIGH);
       digitalWrite(LED_OPEN, LOW);
-      delay(1000);
+      delay(100);
 
     } else if (n == 40) {
       Serial.println("Access denied");
-      s.write(30);
       inProgress = false;
-      delay(1000);
+      delay(100);
     }
   }
   delay(200);
