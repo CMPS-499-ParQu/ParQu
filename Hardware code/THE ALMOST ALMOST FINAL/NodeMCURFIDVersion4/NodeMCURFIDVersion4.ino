@@ -208,6 +208,7 @@ void getUserData() {
   if(validReservCreated){
     entryStat = 3;
     reservKey = reservKeyCreated;
+    validReserv=true;
   }
 }
 void compareForEntry() {

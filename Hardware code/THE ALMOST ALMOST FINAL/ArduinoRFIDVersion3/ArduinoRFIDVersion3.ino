@@ -98,6 +98,13 @@ void loop() {
     } else if (n == 40) {
       Serial.println("Access denied");
       inProgress = false;
+      digitalWrite(LED_CLOSE, LOW);
+      delay(500);
+      digitalWrite(LED_CLOSE, HIGH);
+      delay(500);
+      digitalWrite(LED_CLOSE, LOW);
+      delay(500);
+      digitalWrite(LED_CLOSE, HIGH);
       delay(100);
     }
   }

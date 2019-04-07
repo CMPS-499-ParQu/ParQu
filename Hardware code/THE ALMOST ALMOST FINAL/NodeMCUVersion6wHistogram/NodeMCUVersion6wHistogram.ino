@@ -39,7 +39,7 @@ String keys[2][4] = { {"-LZaE7RMP-v3D7gQ3-eb", "-LZaERMQCZkwimFRwbqP", "-LZaEZRL
   {"-LZaF9HMxT4d7muUSfc_", "-LZaFFBqEK3dW9sGiMra", "-LZaFNyTtBvdVRnCjvoC", "-LZaFWD0k8LqCGYuvVZ-"}
 };
 //CENG , CAAS
-String zonesKeys[2] = {"-Lb85CK6ZJ-dDww6syek", "-Lb86dTYtfEsGaSnT7Dw"};
+String zonesKeys[2] = {"-LbTJRAAq_Vmvu3iBMQj", "-LbTH446mhzSZ10rZixT"};
 int histSpotsCounter[2] = {  0   ,  0  };
 void setup() {
   Serial.begin(9600);
@@ -71,114 +71,7 @@ void setup() {
   // GMT 0 = 0
   timeClient.setTimeOffset(10800);
 }
-void checkIfHistogramDataIsNeeded() {
 
-  if (!dateStamp.equals(prevDate)) {
-    prevDate = dateStamp;
-    for (int i = 0; i < 17; i++)
-      gotData[i] = false;
-  }
-
-  if (hourStamp >= 6 && hourStamp <= 22) {
-    if (!gotData[hourStamp - 6] && minuteStamp >= 30) {
-      needHistData = true;
-      gotData[hourStamp - 6] = true;
-      return;
-    }
-  }
-
-  needHistData = false;
-
-}
-void sendNewHistogramData() {
-  needHistData = false;
-  
-  for (int i = 0; i < 2; i++) {
-    for (int j = 0; j < 4; j++) {
-      String spotPath("spots/" + keys[i][j] + "/status");
-      String spotStatus = Firebase.getString(spotPath);
-
-      if (Firebase.failed()) {
-        Serial.print("setting failed:");
-        Serial.println(Firebase.error());
-
-        delay(500);
-        spotStatus = Firebase.getString(spotPath);
-      }
-
-      if (spotStatus.equals("not available")) {
-        histSpotsCounter[i] += 1;
-      }
-    }
-    //change counter
-    int hr = hourStamp - 6;
-    String pathCount("zones/" + zonesKeys[i] + "/history/" + dayStamp + "/info/" + hr + "/count");
-    String oldCount = Firebase.getString(pathCount);
-    if (Firebase.failed()) {
-      Serial.print("getting old count failed:");
-      Serial.println(Firebase.error());
-
-      delay(500);
-      oldCount = Firebase.getString(pathCount);
-    }
-    char countArr[oldCount.length() + 1];
-    oldCount.toCharArray(countArr, oldCount.length() + 1);
-    countArr[0] = countArr[2];
-    countArr[2] = countArr[4];
-    countArr[4] = countArr[6];
-    countArr[6] = histSpotsCounter[i]+'0';
-    
-    String newCount(countArr);
-
-    Firebase.setString(pathCount, newCount);
-
-    if (Firebase.failed()) {
-      Serial.print("setting new count failed:");
-      Serial.println(Firebase.error());
-
-      delay(500);
-      Firebase.setString(pathCount, newCount);
-    }
-
-  
-    //change date
-    for (int k = 1; k < 4; k++) {
-      String pathDate("zones/" + zonesKeys[i] + "/history/" + dayStamp + "/info/" + hr + "/date/" + k);
-      String histDate = Firebase.getString(pathDate);
-      if (Firebase.failed()) {
-        Serial.print("setting failed:");
-        Serial.println(Firebase.error());
-
-        delay(500);
-        histDate = Firebase.getString(pathDate);
-      }
-
-      String pathDate2("zones/" + zonesKeys[i] + "/history/" + dayStamp + "/info/" + hr + "/date/" + (k - 1));
-      Firebase.setString(pathDate2, histDate);
-      if (Firebase.failed()) {
-        Serial.print("setting failed:");
-        Serial.println(Firebase.error());
-
-        delay(500);
-        Firebase.setString(pathDate2, histDate);
-      }
-
-      if (k == 3) {
-        Firebase.setString(pathDate, dateStamp);
-        if (Firebase.failed()) {
-          Serial.print("setting failed:");
-          Serial.println(Firebase.error());
-
-          delay(500);
-          Firebase.setString(pathDate, dateStamp);
-        }
-      }
-
-    }
-    histSpotsCounter[i] = 0;
-  }
-
-}
 void loop() {
 
   StaticJsonBuffer<200> jsonBuffer;
@@ -286,5 +179,106 @@ void getCurrentTime() {
   //  splitT = minAndSecStamp.indexOf(":");
   //  String minn = timeStamp.substring(0, splitT);
   //  minuteStamp = minn.toInt();
+
+}
+void checkIfHistogramDataIsNeeded() {
+
+  if (!dateStamp.equals(prevDate)) {
+    prevDate = dateStamp;
+    for (int i = 0; i < 17; i++)
+      gotData[i] = false;
+  }
+
+  if (hourStamp >= 6 && hourStamp <= 22) {
+    if (!gotData[hourStamp - 6] && minuteStamp >= 30) {
+      needHistData = true;
+      gotData[hourStamp - 6] = true;
+      return;
+    }
+  }
+
+  needHistData = false;
+
+}
+void sendNewHistogramData() {
+  needHistData = false;
+
+  for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < 4; j++) {
+      String spotPath("spots/" + keys[i][j] + "/status");
+      String spotStatus = Firebase.getString(spotPath);
+
+      if (Firebase.failed()) {
+        Serial.print("setting failed:");
+        Serial.println(Firebase.error());
+
+        delay(500);
+        spotStatus = Firebase.getString(spotPath);
+      }
+
+      if (spotStatus.equals("not available")) {
+        histSpotsCounter[i] += 1;
+      }
+    }
+    int hr = hourStamp - 6;
+    
+    for (int k = 1; k < 4; k++) {
+      //change count
+      String pathCount("zones/" + zonesKeys[i] + "/statistics/" + dayStamp + "/hoursInfo/" + hr + "/count/" + k);
+      int histCount = Firebase.getInt(pathCount);
+      if (Firebase.failed()) {
+        Serial.print("getting hist count failed:");
+        Serial.println(Firebase.error());
+
+        delay(500);
+        histCount = Firebase.getInt(pathCount);
+      }
+      String pathCount2("zones/" + zonesKeys[i] + "/statistics/" + dayStamp + "/hoursInfo/" + hr + "/count/" + (k - 1));
+      Firebase.setInt(pathCount2, histCount);
+      if (Firebase.failed()) {
+        Serial.print("setting hist count failed:");
+        Serial.println(Firebase.error());
+
+        delay(500);
+        Firebase.setInt(pathCount2, histCount);
+      }
+      
+      //change date
+      String pathDate("zones/" + zonesKeys[i] + "/statistics/" + dayStamp + "/hoursInfo/" + hr + "/date/" + k);
+      String histDate = Firebase.getString(pathDate);
+      if (Firebase.failed()) {
+        Serial.print("setting failed:");
+        Serial.println(Firebase.error());
+
+        delay(500);
+        histDate = Firebase.getString(pathDate);
+      }
+
+      String pathDate2("zones/" + zonesKeys[i] + "/statistics/" + dayStamp + "/hoursInfo/" + hr + "/date/" + (k - 1));
+      Firebase.setString(pathDate2, histDate);
+      if (Firebase.failed()) {
+        Serial.print("setting failed:");
+        Serial.println(Firebase.error());
+
+        delay(500);
+        Firebase.setString(pathDate2, histDate);
+      }
+
+      if (k == 3) {
+        Firebase.setString(pathDate, dateStamp);
+        Firebase.setInt(pathCount,histSpotsCounter[i]);
+        if (Firebase.failed()) {
+          Serial.print("setting failed:");
+          Serial.println(Firebase.error());
+
+          delay(500);
+          Firebase.setString(pathDate, dateStamp);
+          Firebase.setInt(pathCount,histSpotsCounter[i]);
+        }
+      }
+
+    }
+    histSpotsCounter[i] = 0;
+  }
 
 }
