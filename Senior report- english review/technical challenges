@@ -1,8 +1,0 @@
-Technical challenges
-
-The technical challenges we may face doing this project:
-1.    Ultrasonic sensors might not detect a car if it is not close enough.
-2.    Additional financial and physical resources will be required to scale the system.
-3.    Internet connection profoundly affects keeping the system in real time 
-4.    Android application must keep up to date with the latest Android version.
-5.    Android application must be a scalable and extendable, user-friendly application with a high             level of performance and services.

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:saveEnabled="true"
+    tools:context="com.sourcey.materiallogindemo.Choices2"><![CDATA[
+
+
+        android:enabled=
+        android:padding=12dp"
+        android:text="Reserve a parking"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup6" />
+
+
+
+
+    ]]>
+
+    <Button
+        android:id="@+id/reserve_btn3"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/rounded_gray_button"
+        android:editable="false"
+        android:padding="12dp"
+        android:text="Reserve a parking"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_btn3"
+        tools:clickable="false" />
+
+    <Button
+        android:id="@+id/show_res_btn3"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/rounded_gray_button"
+        android:editable="false"
+        android:padding="12dp"
+        android:text="Show reservations"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reserve_btn3"
+        tools:clickable="false" />
+
+    <Button
+        android:id="@+id/check_btn3"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:background="@drawable/rounded_button"
+        android:padding="12dp"
+        android:text="Check availability"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

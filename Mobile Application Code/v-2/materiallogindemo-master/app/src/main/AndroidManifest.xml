@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sourcey.materiallogindemo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".First"
+            android:label="Sign in" />
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".ZonesList"
+            android:label="Reserve a Parking" />
+        <activity
+            android:name=".SignupActivity"
+            android:parentActivityName=".LoginActivity"
+            android:label="Sign up" />
+        <activity
+            android:name=".ShowReservations"
+            android:parentActivityName=".Choices"
+            android:label="My Reservations" />
+        <activity
+            android:name=".ZonesList"
+            android:parentActivityName=".Choices"
+            android:label="Select a Zone" />
+        <activity
+            android:name=".Choices"
+            android:parentActivityName=".First"
+            android:label="Select a Service" />
+        <activity android:name=".First" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Choices2"
+            android:parentActivityName=".First"
+            android:label="Select a Service "></activity>
+        <activity
+            android:name=".Check_availability"
+            android:parentActivityName=".ZonesList"
+            android:label="Map" />
+        <activity
+            android:name=".ZoneList2"
+            android:parentActivityName=".Choices"
+            android:label="Select a Zone" />
+        <activity
+            android:name=".CarCare"
+            android:parentActivityName=".Choices"
+            android:label="Request Car Care" />
+        <activity
+            android:name=".AboutParQU"
+            android:parentActivityName=".First"
+            android:label="About ParQu"></activity>
+        <activity android:name=".ContactUs"
+            android:parentActivityName=".First"
+            android:label="Contact Us"></activity>
+    </application>
+
+</manifest>
