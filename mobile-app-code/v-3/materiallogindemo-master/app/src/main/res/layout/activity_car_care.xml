@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bacground1"
+    tools:context="com.sourcey.materiallogindemo.CarCare">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="90dp"
+        android:layout_marginTop="90dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <at.markushi.ui.CircleButton
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:onClick="carWash"
+            android:src="@drawable/carwash2"
+            app:cb_color="#03A9F4"
+            app:cb_pressedRingWidth="8dip" />
+
+        <at.markushi.ui.CircleButton
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:onClick="carWash"
+            android:src="@drawable/car13"
+            app:cb_color="#03A9F4"
+            app:cb_pressedRingWidth="8dip" />
+
+        <at.markushi.ui.CircleButton
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:onClick="carWash"
+            android:src="@drawable/carwheel"
+            app:cb_color="#03A9F4"
+            app:cb_pressedRingWidth="8dip" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
