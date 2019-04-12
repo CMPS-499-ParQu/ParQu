@@ -289,12 +289,12 @@
         Log.i("Time", "Post currently looking took "+(endTime - startTime) + " ns" );*/
 //////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-        /* post spot */
+        /* add spot */
      /*   long startTime = System.nanoTime();
         DatabaseReference databaseSpot;
         databaseSpot = FirebaseDatabase.getInstance().getReference("spots");
         String id = databaseSpot.push().getKey();
-        Spot spot = new Spot ("","",1);
+        Spot spot = new Spot ("BNK Male Zone","available",1);
         databaseSpot.child(id).setValue(spot);
         long endTime = System.nanoTime();
         Log.i("Time", "Post spot took "+(endTime - startTime) + " ns" );*/
