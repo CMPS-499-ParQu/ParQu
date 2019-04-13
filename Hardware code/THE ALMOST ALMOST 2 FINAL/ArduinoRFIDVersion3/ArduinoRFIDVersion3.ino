@@ -2,8 +2,9 @@
 #include <SPI.h>
 #include <MFRC522.h>
 #include <SoftwareSerial.h>
+//#include <Servo.h>
 
-
+//Servo servo;  // create servo object to control a servo
 SoftwareSerial s(5, 6);
 #define SS_PIN 10
 #define RST_PIN 9
@@ -27,6 +28,8 @@ void setup() {
   digitalWrite(LED_CLOSE, HIGH);
   digitalWrite(LED_OPEN, LOW);
   pinMode(buttonPin, INPUT);
+  //servo.attach(7);  // attaches the servo on pin 9 to the servo object
+  //servo.write(90);
 }
 
 void loop() {
@@ -34,24 +37,23 @@ void loop() {
   // Look for new cards
   StaticJsonBuffer<1000> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
-
   if (!inProgress) {
-    
     if ( ! mfrc522.PICC_IsNewCardPresent())
     {
       return;
     }
     // Select one of the cards
+
     if ( ! mfrc522.PICC_ReadCardSerial())
     {
       return;
     }
-    zoneNumb=-1;
+    zoneNumb = -1;
     buttonState = digitalRead(buttonPin);
-    if(buttonState == LOW){
+    if (buttonState == LOW) {
       zoneNumb = 0;
       Serial.println("low: Library Building");
-    } else if(buttonState == HIGH){
+    } else if (buttonState == HIGH) {
       zoneNumb = 1;
       Serial.println("high: Business Building");
     }
@@ -88,22 +90,24 @@ void loop() {
     if (n == 20) {
       Serial.println("Access allowed");
       inProgress = false;
+      //servo.write(180);
       digitalWrite(LED_CLOSE, LOW);
       digitalWrite(LED_OPEN, HIGH);
       delay(5000);
       digitalWrite(LED_CLOSE, HIGH);
       digitalWrite(LED_OPEN, LOW);
+      //servo.write(90);
       delay(100);
 
     } else if (n == 40) {
       Serial.println("Access denied");
       inProgress = false;
       digitalWrite(LED_CLOSE, LOW);
-      delay(500);
+      delay(300);
       digitalWrite(LED_CLOSE, HIGH);
-      delay(500);
+      delay(300);
       digitalWrite(LED_CLOSE, LOW);
-      delay(500);
+      delay(300);
       digitalWrite(LED_CLOSE, HIGH);
       delay(100);
     }

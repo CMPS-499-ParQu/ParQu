@@ -10,8 +10,9 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP);
 
 SoftwareSerial s(D6, D5);
-#define FIREBASE_HOST "testdatabase11.firebaseio.com"
-#define FIREBASE_AUTH "DU7wHivvK33SkJMzhc29SYy8itzyRrdDzZb5KBlz"
+
+#define FIREBASE_HOST "fir-auth-45665.firebaseio.com"
+#define FIREBASE_AUTH "oYCggxTfYvvMEwPoQN2vM59ZzTX2Lt2A7KFBT31U"
 #define WIFI_SSID "Ghareisa"
 #define WIFI_PASSWORD "201402464"
 
@@ -194,6 +195,7 @@ void getUserData() {
           entryStat = 6;
           reservKey = String(reserv.key);
           validReservCreated = false;
+          validReserv=true;
           break;
         } else {
           validReserv = false;
