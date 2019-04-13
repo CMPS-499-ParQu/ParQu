@@ -93,13 +93,14 @@ void loop() {
       delay(5000);
       digitalWrite(LED_CLOSE, HIGH);
       digitalWrite(LED_OPEN, LOW);
-      delay(2000);
+      delay(1000);
 
     } else if (n == 40) {
       Serial.println("Access denied");
       s.write(30);
       inProgress = false;
-      delay(3000);
+      delay(1000);
     }
   }
+  delay(200);
 }

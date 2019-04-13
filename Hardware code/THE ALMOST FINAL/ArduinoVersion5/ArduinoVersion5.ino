@@ -13,7 +13,7 @@ int buttonState = 0;
 
 void setup() {
   s.begin(9600);
-  //Serial.begin(9600);
+  Serial.begin(9600);
 
   pinMode(buttonPin, INPUT);
 
@@ -93,18 +93,18 @@ void takeReading() {
     //of sound in air at sea level (~340 m/s).
     cm = pulse_width / 58.0;
 
-    if (cm < 15) {
+    if (cm < 20) {
       spotStatus[zoneNumb][i] = 1;
       //Serial.print("Car Present: ");
       //Serial.print(cm);
       //Serial.println(" cm");
-    } else if (cm > 15) {
+    } else if (cm > 20) {
       spotStatus[zoneNumb][i] = 2;
       //Serial.print("Car Not Present: ");
       //Serial.print(cm);
       //Serial.println(" cm");
     }
-    //delay(1000);
+    delay(100);
   }
   //  Serial.print(spotStatus[zoneNumb][0]);
   //  Serial.print(",");
@@ -123,10 +123,10 @@ void checkForChanges() {
     if (spotStatus[zoneNumb][i] != prevSpotStatus[zoneNumb][i]) {
       changeInStatus = true;
       spotChangesSerial[i] = spotStatus[zoneNumb][i];
-//      Serial.print("CHANGE IN SPOT ");
-//      Serial.print(i + 1);
-//      Serial.print(" - STAT ");
-//      Serial.println(spotStatus[zoneNumb][i]);
+      Serial.print("CHANGE IN SPOT ");
+      Serial.print(i + 1);
+      Serial.print(" - STAT ");
+      Serial.println(spotStatus[zoneNumb][i]);
     } else {
       spotChangesSerial[i] = 3;
     }
@@ -148,11 +148,16 @@ void sendChangesToSerial() {
     root.printTo(s);
     //root.printTo(Serial);
     // Serial.println("Sent to nodemcu");
-    delay(60);
+    delay(500);
     confirm = s.read();
     if (confirm != 30) {
       root.printTo(s);
-      // spotStatus[zoneNumb][i]=0;
+//      for(int i=0; i<4; i++){
+//        if(spotChangesSerial[i]!=3){
+//          spotStatus[zoneNumb][i]=0;
+//          Serial.println("Spot not confirmed, restarting");
+//        }
+//      }
     }
     
     changeInStatus = false;

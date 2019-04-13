@@ -1,0 +1,301 @@
+/////////////////////////////////////////////////////////////////////////////////////////////
+        /* get zones */
+  /*      zones = new ArrayList<>();
+        final DatabaseReference databaseZones;
+        long startTime = System.nanoTime();
+        databaseZones = FirebaseDatabase.getInstance().getReference("zones");
+
+//code
+
+
+        databaseZones.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //clearing the previous artist list
+                // if(users != null)
+                zones.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    Property zone = postSnapshot.getValue(Property.class);
+                    //adding artist to the list
+                    zones.add(zone);
+                }
+                // int count =0;
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        long endTime = System.nanoTime();
+        Log.i("Time", "Read zones took "+(endTime - startTime) + " ns" );*/
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+        /* get spots */
+   /*     spots = new ArrayList<>();
+        final DatabaseReference databaseZones;
+        long startTime = System.nanoTime();
+        databaseZones = FirebaseDatabase.getInstance().getReference("spots");
+
+//code
+
+
+        databaseZones.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //clearing the previous artist list
+                // if(users != null)
+                spots.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    Spot spot = postSnapshot.getValue(Spot.class);
+                    //adding artist to the list
+                    spots.add(spot);
+                }
+                // int count =0;
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        long endTime = System.nanoTime();
+        Log.i("Time", "Read spots took "+(endTime - startTime) + " ns" );*/
+   //////////////////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        /* get users */
+     /*  users = new ArrayList<>();
+        final DatabaseReference databaseZones;
+        long startTime = System.nanoTime();
+        databaseZones = FirebaseDatabase.getInstance().getReference("users");
+
+//code
+
+
+        databaseZones.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //clearing the previous artist list
+                // if(users != null)
+                users.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    User user = postSnapshot.getValue(User.class);
+                    //adding artist to the list
+                    users.add(user);
+                }
+                // int count =0;
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        long endTime = System.nanoTime();
+        Log.i("Time", "Read users took "+(endTime - startTime) + " ns" );*/
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        /* get reservation  */
+   /*   reservations  = new ArrayList<>();
+        final DatabaseReference databaseZones;
+        long startTime = System.nanoTime();
+        databaseZones = FirebaseDatabase.getInstance().getReference("reservations");
+
+//code
+
+
+        databaseZones.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //clearing the previous artist list
+                // if(users != null)
+                reservations.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    Reservation reservation = postSnapshot.getValue(Reservation.class);
+                    //adding artist to the list
+                    reservations.add(reservation);
+                }
+                // int count =0;
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        long endTime = System.nanoTime();
+        Log.i("Time", "Read reservations took "+(endTime - startTime) + " ns" );*/
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        /* get currently looking  */
+  /*    currentlyLookings  = new ArrayList<>();
+        final DatabaseReference databaseZones;
+        long startTime = System.nanoTime();
+        databaseZones = FirebaseDatabase.getInstance().getReference("currently looking");
+
+//code
+
+
+        databaseZones.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //clearing the previous artist list
+                // if(users != null)
+                currentlyLookings.clear();
+
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    CurrentlyLooking current = postSnapshot.getValue(CurrentlyLooking.class);
+                    //adding artist to the list
+                    currentlyLookings.add(current);
+                }
+                // int count =0;
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        long endTime = System.nanoTime();
+        Log.i("Time", "Read currently looking took "+(endTime - startTime) + " ns" );*/
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+        /* delete zone */
+
+   /*   long startTime = System.nanoTime();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        Query applesQuery = ref.child("zones").orderByChild("zoneName").equalTo("CBAE Female & Male Zone");
+
+        applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                    appleSnapshot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        long endTime = System.nanoTime();
+        Log.i("Time", "Delete zone took "+(endTime - startTime) + " ns" );**/
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        /* delete reservation  */
+       /* long startTime = System.nanoTime();
+        FirebaseDatabase.getInstance().getReference().child("reservations").child("-LbhOUB9okFSPpDEKwew").removeValue();
+        long endTime = System.nanoTime();
+        Log.i("Time", "Delete reservation took "+(endTime - startTime) + " ns" );*/
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        /* delete spot  */
+       /* long startTime = System.nanoTime();
+        FirebaseDatabase.getInstance().getReference().child("spots").child("-LZaGl59lduVe4hB6ZZt").removeValue();
+        long endTime = System.nanoTime();
+        Log.i("Time", "Delete spot took "+(endTime - startTime) + " ns" );*/
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        /* delete currently looking   */
+        /*long startTime = System.nanoTime();
+        FirebaseDatabase.getInstance().getReference().child("currently looking").child("-Lc1pHtLNmR49gkhipb8").removeValue();
+        long endTime = System.nanoTime();
+        Log.i("Time", "Delete currently looking took "+(endTime - startTime) + " ns" );*/
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+        /* post user */
+
+     /* long startTime = System.nanoTime();
+        DatabaseReference databaseUsers;
+        databaseUsers = FirebaseDatabase.getInstance().getReference("users");
+        String id = databaseUsers.push().getKey();
+        User user = new User("", "" , "", "" , "", "");
+        databaseUsers.child(id).setValue(user);
+        long endTime = System.nanoTime();
+        Log.i("Time", "Post user took "+(endTime - startTime) + " ns" );*/
+//////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+        /* post reservation */
+     /*   long startTime = System.nanoTime();
+        List<Integer> time = new ArrayList<>();
+        time.add(1);
+        DatabaseReference databaseReservation;
+        databaseReservation = FirebaseDatabase.getInstance().getReference("reservations");
+        String id = databaseReservation.push().getKey();
+        Reservation reservation = new Reservation(123, "" , "","",time, "", 2.5, 1,1,"");
+        databaseReservation.child(id).setValue(reservation);
+        long endTime = System.nanoTime();
+        Log.i("Time", "Post user took "+(endTime - startTime) + " ns" );*/
+///////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+        /* post currently looking  */
+      /*  long startTime = System.nanoTime();
+        DatabaseReference databaseCurrent;
+        databaseCurrent = FirebaseDatabase.getInstance().getReference("currently Looking");
+        String id = databaseCurrent.push().getKey();
+        CurrentlyLooking current = new CurrentlyLooking(1,1,1,"");
+        databaseCurrent.child(id).setValue(current);
+        long endTime = System.nanoTime();
+        Log.i("Time", "Post currently looking took "+(endTime - startTime) + " ns" );*/
+//////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+        /* add spot */
+     /*   long startTime = System.nanoTime();
+        DatabaseReference databaseSpot;
+        databaseSpot = FirebaseDatabase.getInstance().getReference("spots");
+        String id = databaseSpot.push().getKey();
+        Spot spot = new Spot ("BNK Male Zone","available",1);
+        databaseSpot.child(id).setValue(spot);
+        long endTime = System.nanoTime();
+        Log.i("Time", "Post spot took "+(endTime - startTime) + " ns" );*/
+//////////////////////////////////////////////////////////////////////////////////////////////
