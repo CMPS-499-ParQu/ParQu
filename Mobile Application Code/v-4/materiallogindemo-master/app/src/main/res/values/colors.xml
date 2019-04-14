@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#2196f3</color>
+  <color name="primary_darker">#1976d2</color>
+  <color name = "colorPrimaryDark">#4383cc</color>
+  <color name="primary_light">#bbdefb</color>
+  <color name="colorAccent">#ff8516</color>
+  <color name="primary_text">#212121</color>
+  <color name="secondary_text">#757575</color>
+  <color name="icons">#FFFFFF</color>
+  <color name="divider">#BDBDBD</color>
+  <color name="colorAccent2">#ffa217</color>
+  <color name="colorAccent3">#ed7d31</color>
+  <color name="bar">#00aa4a</color>
+  <color name="chart">#03A9F4</color>
+  <color name="b1">#d6d7d7</color>
+  <color name="b2">#db0101</color>
+  <color name="b3">#f77824</color>
+  <color name="b4">#00aa4a</color>
+
+  <!--
+     button23.setBackgroundColor(0xffd6d7d7);//gray
+        button24.setBackgroundColor(0xFFDB0101);//red
+        button24.setBackgroundColor(0xFFF77824);//orang
+        button24.setBackgroundColor(0xFF00AA4A);// green
+        button27.setBackgroundColor(0xFF00AA4A);// green
+  -->
+</resources>

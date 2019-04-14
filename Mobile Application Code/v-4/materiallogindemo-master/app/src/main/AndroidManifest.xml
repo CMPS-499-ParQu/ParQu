@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sourcey.materiallogindemo">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:label="Sign in"
+            android:parentActivityName=".First" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Reserve a Parking"
+            android:parentActivityName=".ZonesList" />
+        <activity
+            android:name=".SignupActivity"
+            android:label="Sign up"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".ShowReservations"
+            android:label="My Reservations"
+            android:parentActivityName=".Choices" />
+        <activity
+            android:name=".ZonesList"
+            android:label="Select a Zone"
+            android:parentActivityName=".Choices" />
+        <activity
+            android:name=".Choices"
+            android:label="Select a Service"
+            android:parentActivityName=".First" />
+        <activity android:name=".First" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Choices2"
+            android:label="Select a Service "
+            android:parentActivityName=".First" />
+        <activity
+            android:name=".Check_availability"
+            android:label="Map"
+            android:parentActivityName=".ZonesList" />
+        <activity
+            android:name=".ZoneList2"
+            android:label="Select a Zone"
+            android:parentActivityName=".Choices" />
+        <activity
+            android:name=".CarCare"
+            android:label="Request Car Care"
+            android:parentActivityName=".Choices" />
+        <activity
+            android:name=".AboutParQU"
+            android:label="About ParQu" />
+        <activity
+            android:name=".ContactUs"
+            android:label="Contact Us" />
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDXg_vw3rHfm8doZ8kLuYwDbZqcNCSmFeU" />
+
+        <activity android:name=".MapActivity" />
+        <activity android:name=".PayActivity" />
+        <activity android:name=".PaymentDetails" />
+
+        <service
+            android:name="com.paypal.android.sdk.payments.PayPalService"
+            android:exported="false" />
+
+        <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity" />
+        <activity
+            android:name="io.card.payment.CardIOActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="io.card.payment.DataEntryActivity" />
+        <activity
+            android:name=".HistoryActivity"
+            android:label="Current Occupancy Trend"
+            android:parentActivityName=".zoneForHistogram" />
+
+        <receiver android:name=".AlarmNotificationReceiver" />
+
+        <activity android:name=".MoreInfoActivity"
+            android:label="More Details">
+
+        </activity>
+    </application>
+
+</manifest>
