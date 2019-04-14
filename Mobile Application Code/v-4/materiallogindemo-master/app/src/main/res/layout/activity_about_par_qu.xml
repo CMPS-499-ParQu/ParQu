@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/bacground1"
+    tools:context="com.sourcey.materiallogindemo.AboutParQU">
+
+
+    <Button
+        android:id="@+id/btnMap"
+        android:layout_width="300dp"
+        android:layout_height="370dp"
+        android:clickable="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/rounded_button"
+        android:padding="12dp"
+        android:text="ParQU solution provides many useful services to Faculty, Staff and students in QU. It gives the users the ability to reserve a parking spot. Also, it gives the service of viewing the availability of a parking spot. Furthermore, it let you to request car care services such as Car Wash and Oil Change service. As ParQU team, we hope that ParQU will be a helpful solution for parking problem in QU.
+
+"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnMap"
+        android:layout_alignStart="@+id/btnMap"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="68dp"
+        android:elevation="2dp"
+        android:onClick="instagram"
+        app:srcCompat="@drawable/instagram" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/imageView6"
+        android:elevation="2dp"
+        android:onClick="twitter"
+        app:srcCompat="@drawable/twitter" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView10"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/imageView10"
+        android:elevation="2dp"
+        android:onClick="facebook"
+        app:srcCompat="@drawable/facebook" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView11"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/imageView11"
+        android:elevation="2dp"
+        app:srcCompat="@drawable/youtube" />
+
+ <!--   <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView12"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/imageView12"
+        android:layout_toRightOf="@+id/imageView12"
+        android:elevation="2dp"
+        app:srcCompat="@drawable/linkedin" />
+-->
+
+</RelativeLayout>

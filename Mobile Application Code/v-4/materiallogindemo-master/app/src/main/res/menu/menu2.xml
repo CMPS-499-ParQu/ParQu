@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:id="@+id/nav_aboutParQU" android:title="About ParQU"  android:icon="@drawable/information"/>
+    <item android:id="@+id/nav_contactUs" android:title="Contact Us" android:icon="@drawable/phonecall"/>
+    <item android:id="@+id/nav_shareThisApp" android:title="Share This App" android:icon="@drawable/share"/>
+    <item android:id="@+id/nav_moreInfo" android:title="More Details"  android:icon="@drawable/information"/>
+    <item android:id="@+id/nav_signOut" android:title="Logout"  android:icon="@drawable/information"/>
+
+
+
+</menu>

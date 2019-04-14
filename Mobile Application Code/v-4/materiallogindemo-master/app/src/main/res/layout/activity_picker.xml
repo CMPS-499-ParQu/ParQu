@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true">
+
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <!-- everything you already have -->
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bacground1"
+        tools:context=".MainActivity"
+        tools:layout_editor_absoluteY="25dp">
+
+
+        <RelativeLayout
+            android:layout_width="368dp"
+            android:layout_height="495dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="4dp">
+
+            <TextView
+                android:id="@+id/t-1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="42dp"
+                android:text="Date :"
+                android:textColor="#4383cc"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="41dp" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_alignBottom="@+id/t-1"
+                android:layout_marginLeft="44dp"
+                android:layout_marginStart="44dp"
+                android:layout_toEndOf="@+id/t-1"
+                android:layout_toRightOf="@+id/t-1"
+                android:hint="select a date"
+                android:textSize="18sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="124dp"
+                tools:layout_editor_absoluteY="41dp" />
+
+            <Button
+                android:id="@+id/button29"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+
+                android:layout_alignStart="@+id/t-1"
+                android:layout_below="@+id/t-1"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/primary_darker"
+                android:text="06:00 AM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button0"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button29"
+                android:layout_alignBottom="@+id/button29"
+                android:layout_alignStart="@+id/tvDate"
+                android:background="@color/primary_darker"
+                android:text="07:00 AM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button0"
+                android:layout_alignBottom="@+id/button0"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/button0"
+                android:background="@color/primary_darker"
+                android:text="08:00 AM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button1"
+                android:layout_alignBottom="@+id/button1"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/button1"
+                android:background="@color/primary_darker"
+                android:text="09:00 AM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/button29"
+                android:layout_below="@+id/button2"
+                android:layout_marginTop="15dp"
+                android:background="@color/primary_darker"
+                android:text="10:00 AM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button3"
+                android:layout_alignBottom="@+id/button3"
+                android:layout_alignStart="@+id/button0"
+                android:background="@color/primary_darker"
+                android:text="11:00 AM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+
+                android:layout_alignBaseline="@+id/button4"
+                android:layout_alignBottom="@+id/button4"
+                android:layout_alignStart="@+id/button1"
+                android:background="@color/primary_darker"
+                android:text="12:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button5"
+                android:layout_alignBottom="@+id/button5"
+                android:layout_alignStart="@+id/button2"
+                android:background="@color/primary_darker"
+                android:text="13:00   PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/button3"
+                android:layout_below="@+id/button6"
+                android:layout_marginTop="11dp"
+                android:background="@color/primary_darker"
+                android:text="14:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button7"
+                android:layout_alignBottom="@+id/button7"
+                android:layout_alignStart="@+id/button4"
+                android:background="@color/primary_darker"
+                android:text="15:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button8"
+                android:layout_alignBottom="@+id/button8"
+                android:layout_alignStart="@+id/button5"
+                android:background="@color/primary_darker"
+                android:text="16:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button9"
+                android:layout_alignBottom="@+id/button9"
+                android:layout_alignStart="@+id/button6"
+                android:background="@color/primary_darker"
+                android:text="17:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/button7"
+                android:layout_below="@+id/button10"
+                android:layout_marginTop="12dp"
+                android:background="@color/primary_darker"
+                android:text="18:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button11"
+                android:layout_alignBottom="@+id/button11"
+                android:layout_alignStart="@+id/button8"
+                android:background="@color/primary_darker"
+                android:text="19:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button12"
+                android:layout_alignBottom="@+id/button12"
+                android:layout_alignStart="@+id/button9"
+                android:background="@color/primary_darker"
+                android:text="20:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/button13"
+                android:layout_alignBottom="@+id/button13"
+                android:layout_alignStart="@+id/button10"
+                android:background="@color/primary_darker"
+                android:text="21:00  PM"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/t-1"
+                android:layout_below="@+id/textView16"
+                android:layout_marginTop="22dp"
+                android:text="Starting Time:"
+                android:textColor="#4383cc"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="282dp" />
+
+                   <Spinner
+                       android:id="@+id/endingTimeSpinner"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignLeft="@+id/startingTimeSpinner"
+                       android:layout_alignStart="@+id/startingTimeSpinner"
+                       android:layout_alignTop="@+id/textView3"
+                       tools:ignore="MissingConstraints"
+                       tools:layout_editor_absoluteX="180dp"
+                       tools:layout_editor_absoluteY="282dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="17dp"
+                android:text="Select Hours:"
+                android:textColor="#4383cc"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="325dp" />
+
+            <Spinner
+                android:id="@+id/startingTimeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView19"
+                android:layout_alignTop="@+id/textView2"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="184dp"
+                tools:layout_editor_absoluteY="325dp" />
+
+            <Button
+                android:id="@+id/button23"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignEnd="@+id/button11"
+                android:layout_below="@+id/button14"
+                android:layout_marginTop="17dp"
+                android:background="@color/b1"
+                android:textSize="10sp" />
+
+            <Button
+
+                android:id="@+id/button24"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignStart="@+id/button12"
+                android:layout_alignTop="@+id/button23"
+                android:layout_marginStart="20dp"
+                android:background="@color/b2"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/button25"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignEnd="@+id/tvDate"
+                android:layout_alignTop="@+id/button24"
+                android:background="@color/b3"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/button28"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignStart="@+id/button14"
+                android:layout_alignTop="@+id/button25"
+                android:background="@color/b4" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button23"
+                android:layout_toStartOf="@+id/button12"
+                android:text="0% Left   " />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/button12"
+                android:layout_below="@+id/button24"
+                android:text="25% Left" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/button13"
+                android:layout_below="@+id/button25"
+                android:text="50% Left  " />
+
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/button14"
+                android:layout_below="@+id/button28"
+                android:text=">75% Left" />
+
+                 </RelativeLayout>
+
+
+             </android.support.constraint.ConstraintLayout>
+
+             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 tools:context="com.sourcey.materiallogindemo.HistoryActivity">
+
+                 <TextView
+                     android:id="@+id/textView14"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentStart="true"
+                     android:layout_below="@+id/btn_login"
+                     android:layout_marginStart="20dp"
+                     android:layout_marginTop="33dp"
+                     android:text="Current Occupancy Trend"
+                     android:textColor="#4383cc"
+                     android:textSize="18sp"
+                     android:textStyle="bold" />
+
+                 <Spinner
+                     android:id="@+id/SpotSpinner"
+                     android:layout_width="300dp"
+                     android:layout_height="wrap_content"
+                     android:layout_alignStart="@+id/bargraph"
+                     android:layout_below="@+id/textView14"
+                     android:layout_marginTop="21dp"
+                     tools:layout_editor_absoluteX="180dp"
+                     tools:layout_editor_absoluteY="282dp" />
+
+
+                 <com.github.mikephil.charting.charts.BarChart
+                     android:id="@+id/bargraph"
+                     android:layout_width="300dp"
+                     android:layout_height="300dp"
+                     android:layout_below="@+id/SpotSpinner"
+                     android:layout_centerHorizontal="true"
+                     android:layout_marginTop="15dp"></com.github.mikephil.charting.charts.BarChart>
+
+                 <android.support.v7.widget.AppCompatButton
+                     android:id="@+id/btn_login"
+                     android:layout_width="300dp"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentTop="true"
+                     android:layout_alignStart="@+id/SpotSpinner"
+                     android:background="@drawable/rounded_button"
+                     android:onClick="createReservation"
+                     android:padding="12dp"
+                     android:text="Reserve"
+                     android:textColor="#ffffff"
+                     tools:ignore="MissingConstraints"
+                     tools:layout_editor_absoluteX="88dp"
+                     tools:layout_editor_absoluteY="409dp" />
+
+
+             </RelativeLayout>
+
+
+         </TableLayout>
+
+         </ScrollView>
