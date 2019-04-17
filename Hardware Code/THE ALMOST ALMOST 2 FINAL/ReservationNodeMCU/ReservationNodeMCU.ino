@@ -1,3 +1,5 @@
+// Reservation NodeMCU
+
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 #include <SoftwareSerial.h>
@@ -35,6 +37,7 @@ String timeStamp = "";
 int hourStamp = 0;
 int minuteStamp = 0;
 String reservKey;
+
 void setup()
 {
   //Serial.begin(9600);   // Initiate a serial communication
@@ -127,9 +130,7 @@ void getUserData() {
   }
 
   JsonObject& reservations = nodeReserv.getJsonVariant();
-  //Serial.println("before reservations loop");
   for (auto reserv : reservations) {
-    //Serial.println("reserv");
     validReserv = true; // stays true if it is the wanted reservation, otherwise it's assigned to false
     for (auto nested : reserv.value.as<JsonObject>()) {
 

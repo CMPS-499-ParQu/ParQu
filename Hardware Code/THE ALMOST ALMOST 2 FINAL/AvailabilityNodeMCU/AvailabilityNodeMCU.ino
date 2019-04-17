@@ -1,3 +1,4 @@
+// Availability NodeMCU
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 #include <ArduinoJson.h>
@@ -38,9 +39,9 @@ SoftwareSerial s(D6, D5);
 String keys[2][4] = { {"-LZaE7RMP-v3D7gQ3-eb", "-LZaERMQCZkwimFRwbqP", "-LZaEZRLocS__F1B1Vjb", "-LZaF1wa2lFvfc7USq-U"},
   {"-LZaF9HMxT4d7muUSfc_", "-LZaFFBqEK3dW9sGiMra", "-LZaFNyTtBvdVRnCjvoC", "-LZaFWD0k8LqCGYuvVZ-"}
 };
-//CENG , CAAS
+//                              CENG ,                  CAAS
 String zonesKeys[2] = {"-LbTJRAAq_Vmvu3iBMQj", "-LbTH446mhzSZ10rZixT"};
-int histSpotsCounter[2] = {  0   ,  0  };
+int histSpotsCounter[2] = {          0   ,                0  };
 void setup() {
   Serial.begin(9600);
   s.begin(9600);
@@ -165,20 +166,6 @@ void getCurrentTime() {
   hourStamp = timeClient.getHours();
   minuteStamp = timeClient.getMinutes();
   dayStamp = timeClient.getDay();
-  //
-  //  // Extract time
-  //  timeStamp = formattedDate.substring(splitT + 1, formattedDate.length() - 1);
-  //  // Extract hour from time
-  //  splitT = timeStamp.indexOf(":");
-  //  String hr = timeStamp.substring(0, splitT);
-  //  hourStamp = hr.toInt();
-
-  //
-  //  // Extract minute
-  //  String minAndSecStamp = timeStamp.substring(splitT + 1, timeStamp.length() - 1);
-  //  splitT = minAndSecStamp.indexOf(":");
-  //  String minn = timeStamp.substring(0, splitT);
-  //  minuteStamp = minn.toInt();
 
 }
 void checkIfHistogramDataIsNeeded() {
