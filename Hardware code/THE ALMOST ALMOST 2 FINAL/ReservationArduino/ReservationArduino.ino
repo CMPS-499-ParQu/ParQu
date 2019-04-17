@@ -1,10 +1,10 @@
+// Reservation Arduino
+
 #include <ArduinoJson.h>
 #include <SPI.h>
 #include <MFRC522.h>
 #include <SoftwareSerial.h>
-//#include <Servo.h>
 
-//Servo servo;  // create servo object to control a servo
 SoftwareSerial s(5, 6);
 #define SS_PIN 10
 #define RST_PIN 9
@@ -16,6 +16,7 @@ bool inProgress = false;
 int buttonState = 0;
 int zoneNumb = -1;
 int n;
+
 void setup() {
   s.begin(9600);
   Serial.begin(9600);   // Initiate a serial communication
@@ -28,8 +29,6 @@ void setup() {
   digitalWrite(LED_CLOSE, HIGH);
   digitalWrite(LED_OPEN, LOW);
   pinMode(buttonPin, INPUT);
-  //servo.attach(7);  // attaches the servo on pin 9 to the servo object
-  //servo.write(90);
 }
 
 void loop() {
@@ -57,8 +56,7 @@ void loop() {
       zoneNumb = 1;
       Serial.println("high: Business Building");
     }
-    //Serial.println(mfrc522.uid.size);
-    //Show UID on serial monitor
+
     Serial.print("UID tag :");
     int numbers[mfrc522.uid.size];
     String content = "";
@@ -72,6 +70,7 @@ void loop() {
       content.concat(String(mfrc522.uid.uidByte[i], HEX));
     }
     Serial.println();
+    
     root["zoneNumb"] = zoneNumb;
     root["A"] = numbers[0];
     root["B"] = numbers[1];
@@ -79,24 +78,22 @@ void loop() {
     root["D"] = numbers[3];
     root.printTo(s);
     delay(500);
+    
     n = s.read();
     if (n == 10) {
       inProgress = true;
     }
-
 
   } else {
     n = s.read();
     if (n == 20) {
       Serial.println("Access allowed");
       inProgress = false;
-      //servo.write(180);
       digitalWrite(LED_CLOSE, LOW);
       digitalWrite(LED_OPEN, HIGH);
       delay(5000);
       digitalWrite(LED_CLOSE, HIGH);
       digitalWrite(LED_OPEN, LOW);
-      //servo.write(90);
       delay(100);
 
     } else if (n == 40) {

@@ -1,4 +1,5 @@
-//Arduino code
+// Availability Arduino
+
 #include <SoftwareSerial.h>
 #include <ArduinoJson.h>
 
@@ -14,7 +15,7 @@ int buttonState = 0;
 void setup() {
   s.begin(9600);
   Serial.begin(9600);
-
+  
   pinMode(buttonPin, INPUT);
 
   for (auto trig : TRIG_PINS) {
@@ -22,9 +23,6 @@ void setup() {
     digitalWrite(trig, LOW);
   }
 
-  //for(auto echo: ECHO_PINS){
-  // pinMode(echo, INPUT);
-  //}
 }
 //          Spot 1    Spot 2    Spot 3    Spot 4
 // Zone A     x         x         x         x
@@ -48,7 +46,6 @@ float cm;
 
 void loop() {
 
-  //Serial.print("in main loop ");
   //Switching zones
   buttonState = digitalRead(buttonPin);
   if (buttonState == LOW) {
@@ -66,11 +63,8 @@ void loop() {
 }
 
 void takeReading() {
-  //Serial.println(arraySize);
-  //Serial.print("before taking reading ");
   for (int i = 0; i < arraySize; i++) {
-    //Serial.print("spot ");
-    //Serial.println(i);
+ 
     // Hold the trigger pin high for at least 10 us
     digitalWrite(TRIG_PINS[i], HIGH);
     delayMicroseconds(10);
