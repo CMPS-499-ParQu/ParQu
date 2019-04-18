@@ -15,7 +15,7 @@ int buttonState = 0;
 void setup() {
   s.begin(9600);
   Serial.begin(9600);
-  
+
   pinMode(buttonPin, INPUT);
 
   for (auto trig : TRIG_PINS) {
@@ -64,7 +64,7 @@ void loop() {
 
 void takeReading() {
   for (int i = 0; i < arraySize; i++) {
- 
+
     // Hold the trigger pin high for at least 10 us
     digitalWrite(TRIG_PINS[i], HIGH);
     delayMicroseconds(10);
@@ -88,26 +88,26 @@ void takeReading() {
     cm = pulse_width / 58.0;
 
     if (cm < 20) {
-      spotStatus[zoneNumb][i] = 1;
-      //Serial.print("Car Present: ");
-      //Serial.print(cm);
-      //Serial.println(" cm");
+//      spotStatus[zoneNumb][i] = 1;
+//      Serial.print("Car Present: ");
+//      Serial.print(cm);
+//      Serial.println(" cm");
     } else if (cm > 20) {
       spotStatus[zoneNumb][i] = 2;
-      //Serial.print("Car Not Present: ");
-      //Serial.print(cm);
-      //Serial.println(" cm");
+//      Serial.print("Car Not Present: ");
+//      Serial.print(cm);
+//      Serial.println(" cm");
     }
     delay(100);
   }
-  //  Serial.print(spotStatus[zoneNumb][0]);
-  //  Serial.print(",");
-  //  Serial.print(spotStatus[zoneNumb][1]);
-  //  Serial.print(",");
-  //  Serial.print(spotStatus[zoneNumb][2]);
-  //  Serial.print(",");
-  //  Serial.print(spotStatus[zoneNumb][3]);
-  //  Serial.println("");
+    Serial.print(spotStatus[zoneNumb][0]);
+    Serial.print(",");
+    Serial.print(spotStatus[zoneNumb][1]);
+    Serial.print(",");
+    Serial.print(spotStatus[zoneNumb][2]);
+    Serial.print(",");
+    Serial.print(spotStatus[zoneNumb][3]);
+    Serial.println("");
 
 
 }
@@ -145,7 +145,7 @@ void sendChangesToSerial() {
     if (confirm != 30) {
       root.printTo(s);
     }
-    
+
     changeInStatus = false;
     confirm = 0;
   }
