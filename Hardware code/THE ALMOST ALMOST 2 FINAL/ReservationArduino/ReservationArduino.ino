@@ -47,17 +47,18 @@ void loop() {
     {
       return;
     }
+    Serial.print("UID tag read in");
     zoneNumb = -1;
     buttonState = digitalRead(buttonPin);
     if (buttonState == LOW) {
       zoneNumb = 0;
-      Serial.println("low: Library Building");
+      Serial.println("LIB Female & Male Zone");
     } else if (buttonState == HIGH) {
       zoneNumb = 1;
-      Serial.println("high: Business Building");
+      Serial.println("CBAE Female & Male Zone");
     }
 
-    Serial.print("UID tag :");
+    Serial.print("UID:");
     int numbers[mfrc522.uid.size];
     String content = "";
     byte letter;

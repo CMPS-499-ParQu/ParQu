@@ -43,6 +43,7 @@ unsigned long t1;
 unsigned long t2;
 unsigned long pulse_width;
 float cm;
+  String zoneN = "";
 
 void loop() {
 
@@ -50,8 +51,11 @@ void loop() {
   buttonState = digitalRead(buttonPin);
   if (buttonState == LOW) {
     zoneNumb = 0;
+    zoneN = "CENG Female Zone";
   } else if (buttonState == HIGH) {
     zoneNumb = 1;
+    zoneN = "CAAS Female Zone";
+
   }
 
   takeReading();
@@ -88,26 +92,26 @@ void takeReading() {
     cm = pulse_width / 58.0;
 
     if (cm < 20) {
-//      spotStatus[zoneNumb][i] = 1;
-//      Serial.print("Car Present: ");
-//      Serial.print(cm);
-//      Serial.println(" cm");
+      spotStatus[zoneNumb][i] = 1;
+      //      Serial.print("Car Present: ");
+      //      Serial.print(cm);
+      //      Serial.println(" cm");
     } else if (cm > 20) {
       spotStatus[zoneNumb][i] = 2;
-//      Serial.print("Car Not Present: ");
-//      Serial.print(cm);
-//      Serial.println(" cm");
+      //      Serial.print("Car Not Present: ");
+      //      Serial.print(cm);
+      //      Serial.println(" cm");
     }
     delay(100);
   }
-    Serial.print(spotStatus[zoneNumb][0]);
-    Serial.print(",");
-    Serial.print(spotStatus[zoneNumb][1]);
-    Serial.print(",");
-    Serial.print(spotStatus[zoneNumb][2]);
-    Serial.print(",");
-    Serial.print(spotStatus[zoneNumb][3]);
-    Serial.println("");
+  //    Serial.print(spotStatus[zoneNumb][0]);
+  //    Serial.print(",");
+  //    Serial.print(spotStatus[zoneNumb][1]);
+  //    Serial.print(",");
+  //    Serial.print(spotStatus[zoneNumb][2]);
+  //    Serial.print(",");
+  //    Serial.print(spotStatus[zoneNumb][3]);
+  //    Serial.println("");
 
 
 }
@@ -117,10 +121,17 @@ void checkForChanges() {
     if (spotStatus[zoneNumb][i] != prevSpotStatus[zoneNumb][i]) {
       changeInStatus = true;
       spotChangesSerial[i] = spotStatus[zoneNumb][i];
-      Serial.print("CHANGE IN SPOT ");
+      Serial.print("Change in ");
+      Serial.println(zoneN);
+      Serial.print("Spot Number: ");
       Serial.print(i + 1);
-      Serial.print(" - STAT ");
-      Serial.println(spotStatus[zoneNumb][i]);
+      Serial.print(" - New Status: ");
+      if (spotStatus[zoneNumb][i] == 1) {
+        Serial.println("not available");
+      } else {
+        Serial.println("available");
+      }
+      //Serial.println(spotStatus[zoneNumb][i]);
     } else {
       spotChangesSerial[i] = 3;
     }
@@ -140,6 +151,7 @@ void sendChangesToSerial() {
     root["spot4"] = spotChangesSerial[3];
 
     root.printTo(s);
+    Serial.println("New status is sent to NodeMCU in serial");
     delay(500);
     confirm = s.read();
     if (confirm != 30) {

@@ -40,7 +40,7 @@ String reservKey;
 
 void setup()
 {
-  //Serial.begin(9600);   // Initiate a serial communication
+  Serial.begin(9600);   // Initiate a serial communication
   s.begin(9600);
   pinMode(D6, INPUT);
   pinMode(D5, OUTPUT);
@@ -78,13 +78,20 @@ void loop()
   s.write(10);
   //Serial.println("JSON received and parsed");
   //root.prettyPrintTo(Serial);
-
+   Serial.println("UID tag received from Arduino serially.");
+   Serial.print("Read from:  ");
+   
   zoneNumb = root["zoneNumb"];
   data[0] = root["A"];
   data[1] = root["B"];
   data[2] = root["C"];
   data[3] = root["D"];
-
+  if(zoneNumb == 0){
+    Serial.println("LIB Female & Male Zone");
+  } else{
+    Serial.println("CBAE Female & Male Zone");
+  }
+  
   String content = "";
   for (int i = 0; i < 4; i++) {
     content.concat(String(data[i] < 0x10 ? " 0" : " "));
@@ -92,15 +99,17 @@ void loop()
   }
   content.toUpperCase();
   uid = content.substring(1);
-
+  Serial.print("UID: ");
+  Serial.println(uid);
   getUserData();
-
-  if (validReserv) {
+  Serial.println("Searching in Firebase for a valid reservation with the received UID");
+ if (validReserv) {
+    Serial.println("Valid reservation is found..");
     compareForEntry();
+    Serial.println("Inform Arduino serially to open the gate of the parking lot");
   }
-
   sendResultsSerially();
-  //delay(100);
+  delay(100);
 }
 
 
@@ -262,10 +271,10 @@ void compareForEntry() {
 
 void sendResultsSerially() {
   if (accepted) {
-    Serial.println("Access allowed");
+    //Serial.println("Access allowed");
     s.write(20);
   } else {
-    Serial.println("Access denied");
+    //Serial.println("Access denied");
     s.write(40);
   }
   accepted = false;

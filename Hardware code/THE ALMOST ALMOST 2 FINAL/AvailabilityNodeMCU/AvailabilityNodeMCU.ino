@@ -97,11 +97,14 @@ void loop() {
 }
 
 void unpackSerialData(JsonObject& rootSerial) {
-
+  Serial.println("Serial data is received from NodeMCU");
+  Serial.print("Change in ");
   if (rootSerial["zoneNumb"] == 0) {
     zoneNo = 0;
+    Serial.println("CENG Female Zone");
   } else if (rootSerial["zoneNumb"] == 1) {
     zoneNo = 1;
+    Serial.println("CAAS Female Zone");
   }
 
   for (int i = 0; i < 4; i++) {
@@ -109,10 +112,16 @@ void unpackSerialData(JsonObject& rootSerial) {
       changeInStatus[i] = true;
       spotStatus[i] = rootSerial[spotNames[i]];
       countChangedSpots++;
+      Serial.print("Spot Number ");
       //      Serial.print("CHANGE IN SPOT ");
-      //      Serial.print(i + 1);
-      //      Serial.print(" - STAT ");
-      //      Serial.println(spotStatus[i]);
+      Serial.print(i + 1);
+      Serial.print(" - New Status: ");
+      if (spotStatus[i] == 1) {
+        Serial.println("not available");
+      } else {
+        Serial.println("available");
+      }
+      //Serial.println(spotStatus[i]);
     } else {
       changeInStatus[i] = false;
     }
@@ -124,7 +133,7 @@ void sendChangesToFirebase() {
   for (int i = 0; i < 4; i++) {
     if (changeInStatus[i]) {
       String path("spots/" + keys[zoneNo][i] + "/status");
-
+      
       if (spotStatus[i] == 1) {
         Firebase.setString(path, "not available");
       } else if (spotStatus[i] == 2) {
@@ -142,7 +151,7 @@ void sendChangesToFirebase() {
           Firebase.setString(path, "available");
         }
       }
-
+      Serial.println("New status is updated to Firebase");
       s.write(30);
 
       if (--countChangedSpots == 0) {
@@ -208,7 +217,7 @@ void sendNewHistogramData() {
       }
     }
     int hr = hourStamp - 6;
-    
+
     for (int k = 1; k < 4; k++) {
       //change count
       String pathCount("zones/" + zonesKeys[i] + "/statistics/" + dayStamp + "/hoursInfo/" + hr + "/count/" + k);
@@ -229,7 +238,7 @@ void sendNewHistogramData() {
         delay(500);
         Firebase.setInt(pathCount2, histCount);
       }
-      
+
       //change date
       String pathDate("zones/" + zonesKeys[i] + "/statistics/" + dayStamp + "/hoursInfo/" + hr + "/date/" + k);
       String histDate = Firebase.getString(pathDate);
@@ -253,14 +262,14 @@ void sendNewHistogramData() {
 
       if (k == 3) {
         Firebase.setString(pathDate, dateStamp);
-        Firebase.setInt(pathCount,histSpotsCounter[i]);
+        Firebase.setInt(pathCount, histSpotsCounter[i]);
         if (Firebase.failed()) {
           Serial.print("setting failed:");
           Serial.println(Firebase.error());
 
           delay(500);
           Firebase.setString(pathDate, dateStamp);
-          Firebase.setInt(pathCount,histSpotsCounter[i]);
+          Firebase.setInt(pathCount, histSpotsCounter[i]);
         }
       }
 
